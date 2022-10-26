@@ -19,13 +19,13 @@
 
 .getNewOrderButton {
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.7rem 1rem;
   margin-left: 1rem;
   font-size: 0.6em;
   border: 1px solid lightgray;
   cursor: pointer;
   background-color: #fff;
-  color: #000;
+  color: #00a5e4;
   font-weight: 600;
 }
 
