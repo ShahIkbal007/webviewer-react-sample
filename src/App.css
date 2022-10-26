@@ -14,4 +14,68 @@
   font-size: 1.2em;
   line-height: 44px;
   color: white;
+  vertical-align: middle;
+}
+
+.fileContainer {
+  padding: 8px 8px 8px 16px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.file {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.getNewOrderButton {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  font-size: 0.6em;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.questionContainer {
+  flex: 0.3;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  box-shadow: -1px -1px 9px 1px rgba(150, 150, 150, 0.94);
+}
+
+.actionContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.actionButton {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.actionButton:hover {
+  transform: scale(1.02);
+}
+.getNewOrderButton:hover {
+  transform: scale(1.02);
 }

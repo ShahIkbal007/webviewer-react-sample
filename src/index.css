@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -7,8 +9,8 @@ html, body, #root {
 }
 
 .webviewer {
-  flex: 1;
+  flex: 0.7;
   margin: 8px;
   -webkit-box-shadow: 1px 1px 10px #999;
-          box-shadow: 1px 1px 10px #999;
+  box-shadow: 1px 1px 10px #999;
 }
