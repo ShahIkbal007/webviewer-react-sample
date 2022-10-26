@@ -3,14 +3,31 @@ import WebViewer from "@pdftron/webviewer";
 import "./App.css";
 import FileBox from "./FileBox";
 import QuestionData from "./QuestionData";
+import axios from "axios";
+
 
 const App = () => {
   const viewer = useRef(null);
   const [instanceState, setInstanceState] = useState(null);
+  const [completeOrderID, setCompleteOrderId] = useState(null);
 
   const handleSelectInstanceFile = (file) => {
     instanceState.UI.loadDocument(file);
   };
+
+  const handleCompletedOrderId = (id) => {
+    setCompleteOrderId(id);
+  };
+
+  const handleCompleteOrder = () => {
+    axios
+      .put("http://localhost:8080/fetch-files/complete/" + completeOrderID)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  console.log(completeOrderID, "completeOrder");
 
   // if using a class, equivalent of componentDidMount
   useEffect(() => {
@@ -83,7 +100,6 @@ const App = () => {
                   canvas.toBlob((blob) => {
                     console.log(blob);
                   });
-                  
 
                   console.log(canvas.toDataURL(), "canvas.toDataUrl");
                 },
@@ -100,9 +116,14 @@ const App = () => {
       <div className="header">
         <span>Order No. 12345</span>{" "}
         <span className="getNewOrderButton">Get New Order</span>
-        <span className="getNewOrderButton">Mark Order as Complete</span>
+        <span className="getNewOrderButton" onClick={handleCompleteOrder}>
+          Mark Order as Complete
+        </span>
       </div>
-      <FileBox handleSelectInstanceFile={handleSelectInstanceFile} />
+      <FileBox
+        handleSelectInstanceFile={handleSelectInstanceFile}
+        handleCompletedOrderId={handleCompletedOrderId}
+      />
       <div className="container">
         <div className="webviewer" ref={viewer}></div>
         <QuestionData />

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./FileBox.css";
 
-function FileBox({ handleSelectInstanceFile }) {
+function FileBox({ handleSelectInstanceFile, handleCompletedOrderId }) {
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState();
 
@@ -16,9 +16,10 @@ function FileBox({ handleSelectInstanceFile }) {
       axios
         .get("http://localhost:8080/fetch-files")
         .then((res) => {
-          console.log(res.data.data.tasks[0].questions, "dataaaa");
+          console.log(res.data.data.incrementalId, "dataaaa");
           setFiles(res.data.data.tasks[0].questions);
           setSelectedFile(res.data.tasks[0].questions[0]._id);
+          handleCompletedOrderId(res.data.data.incrementalId);
         })
         .catch((err) => console.log(err));
     getFiles();
