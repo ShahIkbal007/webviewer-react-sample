@@ -17,22 +17,6 @@
   vertical-align: middle;
 }
 
-.fileContainer {
-  padding: 8px 8px 8px 16px;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin: 0.5rem;
-}
-
-.file {
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  color: #fff;
-  font-size: 0.8em;
-}
-
 .getNewOrderButton {
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -50,14 +34,6 @@
   height: 100%;
 }
 
-.questionContainer {
-  flex: 0.3;
-  padding: 1rem;
-  border: 1px solid lightgray;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-  box-shadow: -1px -1px 9px 1px rgba(150, 150, 150, 0.94);
-}
-
 .actionContainer {
   display: flex;
   gap: 2rem;
@@ -67,15 +43,32 @@
 }
 
 .actionButton {
-  border-radius: 0.5rem;
-  padding: 1rem;
-  border: 1px solid lightgray;
-  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0%,
+    #3a7bd5 51%,
+    #00d2ff 100%
+  );
+  border: none;
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
 }
 
 .actionButton:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
   transform: scale(1.02);
 }
+
 .getNewOrderButton:hover {
   transform: scale(1.02);
 }

@@ -1,0 +1,33 @@
+.fileContainer {
+  padding: 8px 8px 8px 16px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.file {
+  margin: 10px;
+  padding: 0.5rem 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+  font-size: 0.8em;
+  width: 5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.file:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1.02);
+}

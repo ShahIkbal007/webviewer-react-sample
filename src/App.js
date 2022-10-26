@@ -1,34 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import WebViewer from "@pdftron/webviewer";
 import "./App.css";
-import axios from "axios";
-import { getInstance } from "@pdftron/webviewer";
-
-const dummyFileName = [
-  {
-    id: 1,
-    label: "newFile.pdf",
-    status: "ongoing",
-  },
-  {
-    id: 2,
-    label: "newFile1.pdf",
-    status: "pending",
-  },
-  {
-    id: 3,
-    label: "newFile2.pdf",
-    status: "completed",
-  },
-];
+import FileBox from "./FileBox";
+import QuestionData from "./QuestionData";
 
 const App = () => {
   const viewer = useRef(null);
-  const [files, setFiles] = useState([]);
-  const [selectedFile, setSelectedFile] = useState("/files/PDFTRON_about.pdf");
+  const [instanceState, setInstanceState] = useState(null);
 
-  const handleFileSelect = (file) => {
-    setSelectedFile(file);
+  const handleSelectInstanceFile = (file) => {
+    instanceState.UI.loadDocument(file);
   };
 
   // if using a class, equivalent of componentDidMount
@@ -48,10 +29,7 @@ const App = () => {
           Annotations,
         } = instance.Core;
 
-
-        // document.getElementById('select').onchange = e => {
-        //   instance.UI.loadDocument(e.target.value);
-        // };
+        setInstanceState(instance);
 
         // remove left panel and left panel button from the DOM
         instance.UI.disableElements(["toolbarGroup-Shapes"]);
@@ -116,64 +94,21 @@ const App = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    // After WebViewer has already been constructed
-    const instance = getInstance([viewer]);
-    console.log(instance, "instance-----");
-  }, [viewer]);
-
-  const getColor = (status) => {
-    if (status === "pending") {
-      return "lightgrey";
-    }
-    if (status === "ongoing") {
-      return "#16ad5b";
-    }
-    if (status === "completed") {
-      return "#fb3836";
-    }
-  };
-
-  useEffect(() => {
-    const getFiles = () =>
-      axios
-        .get("http://localhost:8080/fetch-files")
-        .then((res) => {
-          console.log(res.data.data.tasks[0].questions, "dataaaa");
-          setFiles(res.data.data.tasks[0].questions);
-        })
-        .catch((err) => console.log(err));
-    getFiles();
-  }, []);
-
   return (
     <div className="App">
       <div className="header">
         <span>Order No. 12345</span>{" "}
         <span className="getNewOrderButton">Get New Order</span>
+        <span className="getNewOrderButton">Mark Order as Complete</span>
       </div>
-      <div className="fileContainer">
-        {files.map((file) => (
-          <span
-            className="file"
-            key={file._id}
-            onClick={() => handleFileSelect(file)}
-            style={{
-              background: getColor("pending"),
-              border: `1px solid ${getColor("pending")}`,
-            }}
-          >
-            {file.fileName}
-          </span>
-        ))}
-      </div>
+      <FileBox handleSelectInstanceFile={handleSelectInstanceFile} />
       <div className="container">
         <div className="webviewer" ref={viewer}></div>
-        <div className="questionContainer">Question Data</div>
+        <QuestionData />
       </div>
       <div className="actionContainer">
         <button className="actionButton">Copy Selected Area as Image</button>
-        <button className="actionButton">View/Output</button>
+        <button className="actionButton">View OCR Output</button>
         <button className="actionButton">Mark File as Complete</button>
       </div>
     </div>
