@@ -1,7 +1,25 @@
 .questionContainer {
-    flex: 0.4;
-    padding: 1rem;
-    border: 1px solid lightgray;
-    margin: 0.5rem 0.5rem 0.5rem 0;
-    box-shadow: -1px -1px 9px 1px rgba(150, 150, 150, 0.94);
-  }
+  flex: 0.4;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  box-shadow: -1px -1px 9px 1px rgba(150, 150, 150, 0.94);
+  box-sizing: border-box;
+}
+
+.questionContainer__review {
+  width: 100%;
+  height: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+.questionContainer__review:focus {
+  outline: none !important;
+  border: 2px solid #00a5e4;
+}

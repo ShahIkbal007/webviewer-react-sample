@@ -83,6 +83,7 @@ const App = () => {
                   canvas.toBlob((blob) => {
                     console.log(blob);
                   });
+                  
 
                   console.log(canvas.toDataURL(), "canvas.toDataUrl");
                 },
