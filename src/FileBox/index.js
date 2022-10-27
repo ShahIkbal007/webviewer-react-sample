@@ -16,9 +16,10 @@ function FileBox({ handleSelectInstanceFile, handleCompletedOrderId }) {
       axios
         .get("http://localhost:8080/fetch-files")
         .then((res) => {
+          console.log(res.data.data, "dataaaa");
           console.log(res.data.data.incrementalId, "dataaaa");
-          setFiles(res.data.data.tasks[0].questions);
-          setSelectedFile(res.data.tasks[0].questions[0]._id);
+          setFiles(res.data.data.questions);
+          setSelectedFile(res.data.questins[0]._id);
           handleCompletedOrderId(res.data.data.incrementalId);
         })
         .catch((err) => console.log(err));
